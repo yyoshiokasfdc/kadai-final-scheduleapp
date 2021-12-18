@@ -1,20 +1,30 @@
-<%= form_with(model: @schedule) do |f| %>
-  <% if schedule.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% schedule.errors.full_messages.each do |error_msg| %>
-          <li><%= error_msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.label :content, 'スケジュール' %>
-  <%= f.text_field :content %>
-  <%= f.label :start_time, '開始時間' %>
-  <%= f.text_field :start_time %>
-  <%= f.label :end_time, '終了時間' %>
-  <%= f.text_field :end_time %>
-
-  <%= f.submit 'OK' %>
-<% end %>
+<div class="row">
+  <div class="col-6">
+    <%= form_with(model: @schedule) do |f| %>
+      <% if schedule.errors.any? %>
+        <div id="error_explanation" class="alert alert-warning">
+          <ul>
+            <% schedule.errors.full_messages.each do |error_msg| %>
+              <li><%= error_msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <div class="mb-3">
+      　<%= f.label :content, 'スケジュール: ' %>
+      　<%= f.text_field :content %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :start_time, '開始時間: ' %>
+        <%= f.text_field :start_time %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :end_time, '終了時間: ' %>
+        <%= f.text_field :end_time %>
+      </div>
+      
+      <%= f.submit 'OK' %>
+    <% end %>
+  </div>
+</div>

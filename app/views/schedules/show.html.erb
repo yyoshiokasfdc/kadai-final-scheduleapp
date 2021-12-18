@@ -1,9 +1,25 @@
 <h1>Schedule <%= @schedule.id %> の詳細ページ</h1>
 
-<p><%= @schedule.content %></p>
-<li><%= @schedule.start_time %></li>
-<li><%= @schedule.end_time %></li>
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @schedule.id %></td>
+  </tr>
+  <tr>
+    <th>スケジュール</th>
+    <td><%= @schedule.content %></td>
+  </tr>
+  <tr>
+    <th>開始時間</th>
+    <td><%= @schedule.start_time %></td>
+  </tr>
+  <tr>
+    <th>終了時間</th>
+    <td><%= @schedule.end_time %></td>
+  </tr>
+</table>
 
-<%= link_to '一覧に戻る', schedules_path %>
-<%= link_to 'この予定を編集する', edit_schedule_path(@schedule) %>
-<%= link_to 'この予定を削除する', @schedule, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to 'この予定を編集する', edit_schedule_path(@schedule), class: 'btn btn-light' %>
+<%= link_to 'この予定を削除する', @schedule, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+
+<%= link_to '一覧に戻る', schedules_path, class: 'btn btn-primary'%>
