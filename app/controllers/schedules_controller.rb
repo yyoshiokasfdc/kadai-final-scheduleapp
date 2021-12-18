@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
   
   def index
     @schedules = Schedule.all
+    @pagy, @schedules = pagy(Schedule.order(id: :desc), items: 5)
   end
 
   def show

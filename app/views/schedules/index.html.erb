@@ -7,5 +7,6 @@
     <li><%= schedule.end_time %></li>
   <% end %>
 </ul>
+<%== pagy_nav(@pagy) %>
 
 <%= link_to '新規スケジュール投稿', new_schedule_path %>
