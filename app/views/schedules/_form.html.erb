@@ -1,0 +1,10 @@
+<%= form_with(model: @schedule) do |f| %>
+  <%= f.label :content, 'スケジュール' %>
+  <%= f.text_field :content %>
+  <%= f.label :start_time, '開始時間' %>
+  <%= f.text_field :start_time %>
+  <%= f.label :end_time, '終了時間' %>
+  <%= f.text_field :end_time %>
+
+  <%= f.submit 'OK' %>
+<% end %>

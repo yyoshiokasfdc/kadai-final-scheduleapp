@@ -1,10 +1,11 @@
 class SchedulesController < ApplicationController
+  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  
   def index
     @schedules = Schedule.all
   end
 
   def show
-    @schedule = Schedule.find(params[:id])
   end
 
   def new
@@ -24,12 +25,9 @@ class SchedulesController < ApplicationController
   end
 
   def edit
-    @schedule = Schedule.find(params[:id])
   end
 
   def update
-    @schedule = Schedule.find(params[:id])
-
     if @schedule.update(schedule_params)
       flash[:success] = '予定が更新されました'
       redirect_to root_url
@@ -40,7 +38,6 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
-    @schedule = Schedule.find(params[:id])
     @schedule.destroy
 
     flash[:success] = '予定は削除されました'
@@ -48,6 +45,10 @@ class SchedulesController < ApplicationController
   end
   
   private
+  
+  def set_schedule
+    @schedule = Schedule.find(params[:id])
+  end
   
   def schedule_params
     params.require(:schedule).permit(:content, :start_time, :end_time)
