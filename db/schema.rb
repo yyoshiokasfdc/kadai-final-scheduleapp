@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_12_18_050057) do
 
   create_table "schedules", charset: "utf8mb4", force: :cascade do |t|
-    t.string "title"
+    t.string "content"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false

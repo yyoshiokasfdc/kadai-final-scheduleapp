@@ -1,0 +1,11 @@
+<h1>スケジュール一覧</h1>
+
+<ul>
+  <% @schedules.each do |schedule| %>
+    <li><%= link_to schedule.id, schedule %> : <%= schedule.content %></li>
+    <li><%= schedule.start_time %></li>
+    <li><%= schedule.end_time %></li>
+  <% end %>
+</ul>
+
+<%= link_to '新規スケジュール投稿', new_schedule_path %>

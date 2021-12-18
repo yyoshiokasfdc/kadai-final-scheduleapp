@@ -1,0 +1,9 @@
+<h1>Schedule <%= @schedule.id %> の詳細ページ</h1>
+
+<p><%= @schedule.content %></p>
+<li><%= @schedule.start_time %></li>
+<li><%= @schedule.end_time %></li>
+
+<%= link_to '一覧に戻る', schedules_path %>
+<%= link_to 'この予定を編集する', edit_schedule_path(@schedule) %>
+<%= link_to 'この予定を削除する', @schedule, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

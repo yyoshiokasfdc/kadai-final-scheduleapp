@@ -1,0 +1,14 @@
+<h1>Schedule <%= @schedule.id %> の編集ページ</h1>
+
+<%= form_with(model: @schedule ) do |f| %>
+  <%= f.label :content, 'スケジュール' %>
+  <%= f.text_field :content %>
+  <%= f.label :start_time, '開始時間' %>
+  <%= f.text_field :start_time %>
+  <%= f.label :end_time, '終了時間' %>
+  <%= f.text_field :end_time %>
+
+  <%= f.submit '編集を適用' %>
+<% end %>
+
+<%= link_to '一覧に戻る', schedules_path %>
