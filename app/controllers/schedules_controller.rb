@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  before_action :require_user_logged_in
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -51,7 +52,16 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.find(params[:id])
   end
   
+  private
+  
   def schedule_params
     params.require(:schedule).permit(:content, :start_time, :end_time)
+  end
+  
+  def correct_user
+    @schedule = current_user.schedules.find_by(id: params[:id])
+    unless @schedule
+      redirect_to root_url
+    end
   end
 end

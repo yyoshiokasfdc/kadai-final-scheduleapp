@@ -1,30 +1,38 @@
-<h1>スケジュール一覧</h1>
-
-<% if @schedules.any? %>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>スケジュール</th>
-        <th>開始時間</th>
-        <th>終了時間</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @schedules.each do |schedule| %>
+<% if logged_in? %>
+  <h1>スケジュール一覧</h1>
+  <% if @schedules.any? %>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= link_to schedule.id, schedule %></td></td>
-          <td><%= schedule.content %></td>
-          <td><%= schedule.start_time %></td>
-          <td><%= schedule.end_time %></td>
+          <th>id</th>
+          <th>スケジュール</th>
+          <th>開始時間</th>
+          <th>終了時間</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div>
-    <%== pagy_bootstrap_nav(@pagy) %>
+      </thead>
+      <tbody>
+        <% @schedules.each do |schedule| %>
+          <tr>
+            <td><%= link_to schedule.id, schedule %></td></td>
+            <td><%= schedule.content %></td>
+            <td><%= schedule.start_time %></td>
+            <td><%= schedule.end_time %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+  <% end %>
+  <%= link_to '新規スケジュール投稿', new_schedule_path, class: "btn btn-primary" %>
+  
+<% else %>
+  <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+    <div class="text-center text-white">
+      <h1>Welcome to MySchedule</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
 <% end %>
 
-
-<%= link_to '新規スケジュール投稿', new_schedule_path, class: "btn btn-primary" %>
