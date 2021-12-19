@@ -1,10 +1,9 @@
 class SchedulesController < ApplicationController
   before_action :require_user_logged_in
-  before_action :set_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @schedules = Schedule.all
-    @pagy, @schedules = pagy(Schedule.order(id: :desc), items: 5)
+    @pagy, @schedules = pagy(current_user.schedules.order(id: :desc), items: 5)
   end
 
   def show
@@ -15,11 +14,11 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(schedule_params)
+    @schedule = current_user.schedules.build(schedule_params)
 
     if @schedule.save
       flash[:success] = '予定が作成されました。'
-      redirect_to @schedule
+      redirect_to root_url
     else
       flash.now[:danger] = '情報に不足があります。'
       render :new
@@ -48,14 +47,8 @@ class SchedulesController < ApplicationController
   
   private
   
-  def set_schedule
-    @schedule = Schedule.find(params[:id])
-  end
-  
-  private
-  
   def schedule_params
-    params.require(:schedule).permit(:content, :start_time, :end_time)
+    params.require(:schedule).permit(:content, :start_time, :end_time, :user)
   end
   
   def correct_user

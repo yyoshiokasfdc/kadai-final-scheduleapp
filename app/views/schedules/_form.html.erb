@@ -13,15 +13,15 @@
     
       <div class="mb-3">
       　<%= f.label :content, 'スケジュール: ' %>
-      　<%= f.text_field :content %>
+      　<%= f.text_field :content, class: 'form-control' %>
       </div>
       <div class="mb-3">
         <%= f.label :start_time, '開始時間: ' %>
-        <%= f.text_field :start_time %>
+        <%= f.text_field :start_time, class: 'form-control' %>
       </div>
       <div class="mb-3">
         <%= f.label :end_time, '終了時間: ' %>
-        <%= f.text_field :end_time %>
+        <%= f.text_field :end_time, class: 'form-control' %>
       </div>
       
       <%= f.submit 'OK' %>
