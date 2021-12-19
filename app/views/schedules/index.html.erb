@@ -15,8 +15,8 @@
           <tr>
             <td><%= link_to schedule.id, schedule %></td>
             <td><%= schedule.content %></td>
-            <td><%= schedule.start_time.strftime("%Y/%m/%d %I:%M") %></td>
-            <td><%= schedule.end_time.strftime("%Y/%m/%d %I:%M") %></td>
+            <td><%= schedule.start_time.strftime("%Y/%m/%d %H:%M") %></td>
+            <td><%= schedule.end_time.strftime("%Y/%m/%d %H:%M") %></td>
           </tr>
         <% end %>
       </tbody>
