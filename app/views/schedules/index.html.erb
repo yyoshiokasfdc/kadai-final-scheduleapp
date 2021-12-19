@@ -13,10 +13,10 @@
       <tbody>
         <% @schedules.each do |schedule| %>
           <tr>
-            <td><%= link_to schedule.id, schedule %></td></td>
+            <td><%= link_to schedule.id, schedule %></td>
             <td><%= schedule.content %></td>
-            <td><%= schedule.start_time %></td>
-            <td><%= schedule.end_time %></td>
+            <td><%= schedule.start_time.strftime("%Y/%m/%d %I:%M") %></td>
+            <td><%= schedule.end_time.strftime("%Y/%m/%d %I:%M") %></td>
           </tr>
         <% end %>
       </tbody>
